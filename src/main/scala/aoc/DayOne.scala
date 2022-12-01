@@ -5,6 +5,7 @@ import Atto._
 import cats.data.NonEmptyList
 import cats.syntax.all._
 import cats.effect.IO
+import cats.kernel.Order
 
 object DayOne {
 
@@ -22,5 +23,9 @@ object DayOne {
     }
   }
 
-  def elfWithTheMostCalories(elves: NonEmptyList[Elf]): BigInt = elves.map(_.sumAll).maximum
+  def elfWithTheMostCalories(elves: NonEmptyList[Elf]): BigInt =
+    elves.map(_.sumAll).maximum
+
+  def elvesWithTheMostCalories(elves: NonEmptyList[Elf]): BigInt =
+    elves.map(_.sumAll).sorted(Order.reverse(Order[BigInt])).take(3).sumAll
 }

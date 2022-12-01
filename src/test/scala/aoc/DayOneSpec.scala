@@ -37,4 +37,35 @@ class DayOneSpec extends AnyFunSuite with Matchers {
 
     DayOne.elfWithTheMostCalories(loaded) shouldBe 24000
   }
+
+  test("Part 2 spec") {
+    val input =
+      """1000
+        |2000
+        |3000
+        |
+        |4000
+        |
+        |5000
+        |6000
+        |
+        |7000
+        |8000
+        |9000
+        |
+        |10000
+        |""".stripMargin
+
+    val loaded = DayOne.load(input).unsafeRunSync()
+
+    loaded shouldBe NonEmptyList.of(
+      NonEmptyList.of(1000, 2000, 3000),
+      NonEmptyList.of(4000),
+      NonEmptyList.of(5000, 6000),
+      NonEmptyList.of(7000, 8000, 9000),
+      NonEmptyList.of(10000)
+    )
+
+    DayOne.elvesWithTheMostCalories(loaded) shouldBe 45000
+  }
 }

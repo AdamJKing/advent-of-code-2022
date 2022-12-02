@@ -11,8 +11,10 @@ object AdventOfCode2022 extends IOApp.Simple {
     _      <- IO.println(s"DayOne Part1: ${DayOne.elfWithTheMostCalories(dayOne)}")
     _      <- IO.println(s"DayOne Part2: ${DayOne.elvesWithTheMostCalories(dayOne)}")
 
-    dayTwo <- loadFile("two")(DayTwo.load)
-    _      <- IO.println(s"DayTwo Part1: ${DayTwo.totalScore(dayTwo)}")
+    dayTwoP1 <- loadFile("two")(DayTwo.V1.load)
+    _        <- IO.println(s"DayTwo Part1: ${DayTwo.totalScore(dayTwoP1)}")
+    dayTwoP2 <- loadFile("two")(DayTwo.V2.load)
+    _        <- IO.println(s"DayTwo Part2: ${DayTwo.totalScore(dayTwoP2)}")
 
   } yield ()
 

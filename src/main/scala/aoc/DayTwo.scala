@@ -46,7 +46,7 @@ object DayTwo {
       val round = (hand <~ spaceChar, hand).mapN(Round.apply)
 
       IO.fromEither {
-        (round sepBy1 char('\n'))
+        (round sepBy1 oneOf("\r\n"))
           .parseOnly(input)
           .either
           .leftMap(err => new InputError(s"Failed to load rounds: $err"))
@@ -84,7 +84,11 @@ object DayTwo {
       }
 
       IO.fromEither {
+<<<<<<< HEAD
         (round sepBy1 char('\n'))
+=======
+        (round sepBy1 oneOf("\r\n"))
+>>>>>>> 236c416 (wip)
           .parseOnly(input)
           .either
           .leftMap(err => new InputError(s"Failed to load rounds: $err"))

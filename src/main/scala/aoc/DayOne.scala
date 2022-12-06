@@ -12,8 +12,8 @@ object DayOne {
   type Elf = NonEmptyList[BigInt]
 
   def load(input: String): IO[NonEmptyList[Elf]] = {
-    val elf = many1(bigInt <~ char('\n'))
-    val elves = elf sepBy1 char('\n')
+    val elf   = many1(bigInt <~ oneOf("\r\n"))
+    val elves = elf sepBy1 oneOf("\r\n")
 
     IO.fromEither {
       elves

@@ -1,6 +1,7 @@
 package aoc
 
 import cats.effect.Resource
+import cats.syntax.all._
 import cats.effect.{IO, IOApp}
 
 import scala.io.Source
@@ -15,6 +16,12 @@ object AdventOfCode2022 extends IOApp.Simple {
     _        <- IO.println(s"DayTwo Part1: ${DayTwo.totalScore(dayTwoP1)}")
     dayTwoP2 <- loadFile("two")(DayTwo.V2.load)
     _        <- IO.println(s"DayTwo Part2: ${DayTwo.totalScore(dayTwoP2)}")
+
+    dayThree <- loadFile("three")(DayThree.load)
+    _        <- IO.println(
+                  s"DayThree Part1: ${dayThree.map(DayThree.priorityOfCommon).sumAll}"
+                )
+    _        <- IO.println(s"DayThree Part2: ${DayThree.findBadges(dayThree).sumAll}")
 
   } yield ()
 
